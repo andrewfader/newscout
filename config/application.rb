@@ -9,7 +9,7 @@ module Newscout
     config.load_defaults 5.1
 
     config.action_dispatch.default_headers = {
-      'Access-Control-Allow-Origin' => "chrome-extension://*"
+      'Access-Control-Allow-Origin' => "*"
     }
   end
 end

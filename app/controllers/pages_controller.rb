@@ -3,7 +3,6 @@ class PagesController < ApplicationController
 
   def query
     url = URI.unescape(page_params['url'].split("u=")[1])
-    binding.pry
   end
 
   def tag

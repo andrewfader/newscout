@@ -1,27 +1,36 @@
 import $ from 'jquery'
 
 $(document).ready(function() {
-  setInterval(function() {
-    var text = 'hi bbn'
-    var posts = $('.userContentWrapper:not(:contains(' + text + '))');
-    if (posts.length > 0) {
-      posts.each(function(index, post) {
-        var row = $($(post).find('div:first-child')[0])
-        var newContent = "<div style='float: right;'>" +
-          text +
-          "</div>"
+  var api_url = 'http://localhost:60009'
+  var newscout = "<span><!-- NEWSCOUT --></span>"
+  $.get(api_url + '/tags', function(data) {
 
-        $(post).find('span div a').each(function(index, a) {
-          var href = $(a).attr('href')
-          if (!(href === '#') && href.indexOf('l.php') != -1) {
-            alert(href)
-            $.post('http://localhost:60009/pages/query', {"url": href})
-          }
+    var tags = ""
+    $.each(data, function(index, tag) {
+      tags = tags + " <a href='#' title=' " + tag.name + "' alt='" + tag.name + "'>" + tag.abbrev + "</a>"
+    });
+    var text = tags
+    setInterval(function() {
+      var posts = $('.userContentWrapper:not(:contains(' + newscout + '))');
+      if (posts.length > 0) {
+        posts.each(function(index, post) {
+          post.append(newscout)
+          var row = $($(post).find('div:first-child')[0])
+          var newContent = "<div style='float: right;'>" +
+            text +
+            "</div>"
+
+          $(post).find('span div a').each(function(index, a) {
+            var href = $(a).attr('href')
+            if (!(href === '#') && href.indexOf('l.php') != -1) {
+              $.post(api_url + '/pages/query', {"url": href})
+              row.append(newContent)
+            }
+
+          });
 
         });
-
-        row.append($(newContent))
-      });
-    }
-  }, 1000);
+      }
+    }, 1000);
+  });
 });
