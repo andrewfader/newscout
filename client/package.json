@@ -1,9 +1,25 @@
 {
-  "name": "components-jquery",
-  "version": "2.0.0",
-  "description": "jQuery component",
-  "keywords": [
-    "jquery"
-  ],
-  "main": "./jquery.js"
+  "name": "Newscout",
+  "version": "0.0.1",
+  "description": "Newscout",
+  "scripts": {
+    "build": "node utils/build.js",
+    "start": "node utils/webserver.js"
+  },
+  "devDependencies": {
+    "clean-webpack-plugin": "^0.1.19",
+    "copy-webpack-plugin": "^4.5.1",
+    "css-loader": "^0.25.0",
+    "file-loader": "^0.11.2",
+    "fs-extra": "^0.30.0",
+    "html-loader": "^0.4.5",
+    "html-webpack-plugin": "2.24.1",
+    "style-loader": "^0.13.2",
+    "webpack": "2.2.1",
+    "webpack-dev-server": "^2.11.2",
+    "write-file-webpack-plugin": "3.4.2"
+  },
+  "dependencies": {
+    "jquery": "^3.3.1"
+  }
 }

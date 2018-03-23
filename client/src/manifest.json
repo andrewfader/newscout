@@ -1,0 +1,13 @@
+{
+  "name": "Newscout",
+  "options_page": "options.html",
+  "content_scripts": [{
+    "matches": ["*://*.facebook.com/*"],
+    "js": ["facebook.bundle.js"]
+  }],
+  "icons": {
+    "128": "icon.png"
+  },
+  "manifest_version": 2,
+  "content_security_policy": "script-src 'self' 'unsafe-eval'; object-src 'self'"
+}
