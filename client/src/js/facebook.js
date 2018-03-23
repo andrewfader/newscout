@@ -11,9 +11,11 @@ $(document).ready(function() {
           text +
           "</div>"
 
-        $(post).find('.userContentWrapper div div div div div div div div span div a').each(function(index, a) {
-          if (!($(a).attr('href') === '#')) {
-            alert($(a).attr('href'))
+        $(post).find('span div a').each(function(index, a) {
+          var href = $(a).attr('href')
+          if (!(href === '#') && href.indexOf('l.php') != -1) {
+            alert(href)
+            $.post('http://localhost:60009/pages/query', {"url": href})
           }
 
         });
