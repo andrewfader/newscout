@@ -18,13 +18,27 @@ $(document).ready(function() {
               if (!(href === '#') && href.indexOf('l.php') != -1) {
                 $.post(api_url + '/pages/query', {"url": href}, function(data) {
                   var tags = ""
-                  $.each(data, function(index, tag) {
-                    tags = tags + " <a href='#' title=' " + tag.name + "' alt='" + tag.name + "'>" + tag.abbrev + "</a>"
+                  var page_id = data.page_id
+                  $.each(data.tags, function(index, tag) {
+                    tags = tags +
+                      "<a class='newscoutTag' href='" + api_url + "/pages/" + page_id + "/tag?=" + tag.id + "' title=' " +
+                      tag.name +
+                      "' alt='" +
+                      tag.name + "'>"
+                      + tag.abbrev + "</a>"
                   });
-                  var newContent = "<div style='float: right; position: relative; z-index: 99;'>" +
+                  var newContent = "<!--NEWSCOUT TAGS--><div style='float: right; position: relative; z-index: 99;'>" +
                     tags +
                     "</div>"
-                  $($(a).parent()).append(newContent)
+                  parent = $($(a).parent())
+                  if (parent.html().indexOf("TAGS") == -1) {
+                    parent.append(newContent)
+                    $('.newscoutTag').on('click', function(e) {
+                      e.preventDefault()
+                      tag = $(e).target()
+                      alert(tag.href)
+                    });
+                  }
                 })
               }
 

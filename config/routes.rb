@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   post '/pages/query'
-  post '/pages/tag'
+  resources :pages do
+    get :tag
+  end
   resources :tags, only: :index
 end

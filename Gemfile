@@ -5,16 +5,18 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
-gem 'rails'
-gem 'pg'
-gem 'puma'
-gem 'sass-rails'
-gem 'uglifier'
 gem 'coffee-rails'
-gem 'turbolinks'
-gem 'redis'
 gem 'devise'
 gem 'excon'
+gem 'lol_dba'
+gem 'pg'
+gem 'puma'
+gem 'rack-cors'
+gem 'rails'
+gem 'redis'
+gem 'sass-rails'
+gem 'turbolinks'
+gem 'uglifier'
 
 group :development, :test do
   gem 'spirit_hands', github: 'steakknife/spirit_hands'
