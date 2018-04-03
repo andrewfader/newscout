@@ -1,0 +1,9 @@
+a.newscoutTag {
+  color: lime !important;
+  text-decoration: none !important;
+  font-weight: bold !important;
+  font-size: 14px !important;
+}
+.newscoutPopup {
+  display: none;
+}

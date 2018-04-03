@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def query
-    url = URI.unescape(page_params['url'].split("u=")[1])
+    url = URI.unescape(page_params['url'])
     page = Page.find_or_create_by(url: url)
     render json: {page_id: page.id, tags: page.tags}
   end
