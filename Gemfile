@@ -19,7 +19,8 @@ gem 'turbolinks'
 gem 'uglifier'
 
 group :development, :test do
-  gem 'spirit_hands', github: 'steakknife/spirit_hands'
+  gem 'byebug'
+  gem 'pry-rails'
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'rspec'

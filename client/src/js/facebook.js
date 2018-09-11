@@ -1,13 +1,24 @@
 import $ from 'jquery'
+// import * from 'jquery-ui'
 import "../css/facebook.css";
 
 var port = chrome.runtime.connect();
 
-window.addEventListener("popup", function(event) {
+window.addEventListener("message", function(event) {
   if (event.source != window)
     return;
 
-  $('popup' + event.data.href).popup();
+  if (event.origin == 'https://www.facebook.com')
+    return
+
+    alert('wazjo2')
+    debugger
+  if (event.data.type && (event.data.type == "FROM_PAGE")) {
+    debugger
+    alert('wazjo')
+  }
+
+  // $('popup' + event.data.href).popup();
 }, false);
 
 $(document).ready(function() {
@@ -15,7 +26,6 @@ $(document).ready(function() {
   var newscout = "<!-- NEWSCOUT -->"
 
   var username = $('a[title="Profile"]').attr('href').split("/")[3]
-
   $.get(api_url + '/tags', function(data) {
     setInterval(function() {
       var posts = $('.userContentWrapper:not(:contains("NEWSCOUT"))');
@@ -51,7 +61,7 @@ $(document).ready(function() {
                       "<div style='float: right; position: relative; z-index: 99;'>" +
                       "<div id='popup" + href + "' class='newscoutPopup'>" +
                       tags +
-                      '</div> <a href=# onclick=window.postMessage({"text":"' + href + '"}, *)>Tag</a></div>'
+                      "</div> <a href=# onClick=window.postMessage({\"text\":\"" + href + "\"},\"*\")>Tag</a></div>"
 
                     parent = $($(a).parent())
 
