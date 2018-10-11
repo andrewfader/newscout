@@ -6,6 +6,7 @@ git_source(:github) do |repo_name|
 end
 
 gem 'coffee-rails'
+gem 'hamlit'
 gem 'devise'
 gem 'excon'
 gem 'lol_dba'
@@ -20,7 +21,7 @@ gem 'uglifier'
 
 group :development, :test do
   gem 'byebug'
-  gem 'pry-rails'
+  gem 'spirit_hands', github: "steakknife/spirit_hands", branch: 'deprecate-autoload'
   gem 'capybara'
   gem 'selenium-webdriver'
   gem 'rspec'

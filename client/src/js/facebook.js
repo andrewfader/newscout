@@ -24,7 +24,7 @@ $(document).ready(function() {
                   var page_id = data.page_id
                   $.each(data.tags, function(index, tag) {
                     tags = tags +
-                      "<a class='newscoutTag' href='" + api_url + "/pages/" + page_id + "/tag?=" + tag.id + "' title=' " +
+                      "<a class='newscoutTag' href='" + api_url + "/pages/" + page_id + "/tag?tag=" + tag.id + "' title=' " +
                       tag.name +
                       "' alt='" +
                       tag.name + "'>"

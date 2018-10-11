@@ -8,14 +8,9 @@ class PagesController < ApplicationController
   end
 
   def tag
-    tag_id = page_params['tag_id']
+    tag_id = page_params['tag']
     page_id = page_params['page_id']
-    if page_tag = PageTag.where(page_id: page_id, tag_id: tag_id).first
-      page_tag.destroy
-    else
-      PageTag.create(page_id: page_id, tag_id: tag_id)
-    end
-    head :ok
+    @page_tag = PageTag.find_or_create_by(page_id: page_id, tag_id: tag_id)
   end
 
   def page_params
