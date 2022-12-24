@@ -16,7 +16,7 @@
     "html-webpack-plugin": "5.5.0",
     "style-loader": "^0.13.2",
     "webpack": "5.75.0",
-    "webpack-dev-server": "^3.11.3",
+    "webpack-dev-server": "^4.11.1",
     "write-file-webpack-plugin": "3.4.2"
   },
   "dependencies": {
